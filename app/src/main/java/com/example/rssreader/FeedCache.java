@@ -6,6 +6,7 @@ import android.util.Log;
 import com.example.rssreader.db.FeedItemEntity;
 import com.example.rssreader.db.FeedItemOpenHelper;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -24,14 +25,20 @@ public class FeedCache {
     * */
     public boolean exists() {
         FeedItemOpenHelper openHelper = new FeedItemOpenHelper(context);
-        boolean result =(openHelper.selectAllCount() > 0);
+
+        // TODO:DBのレコード数をカウントして、キャッシュがあるかどうかを判定しましょう
+        boolean result = false;
+
         openHelper.close();
         return result;
     }
 
     public List<FeedItemEntity> read() {
         FeedItemOpenHelper openHelper = new FeedItemOpenHelper(context);
-        List<FeedItemEntity> result = openHelper.selectAll();
+
+        // TODO:DBのレコード数を取得して、
+        List<FeedItemEntity> result = new ArrayList<FeedItemEntity>();
+
         openHelper.close();
         return result;
     }
@@ -39,8 +46,7 @@ public class FeedCache {
     public void write(String feedString) {
         FeedItemOpenHelper openHelper = new FeedItemOpenHelper(context);
 
-        // 念のため、既存のレコードは削除しておく
-        openHelper.deleteAll();
+        // TODO: 念のため、既存のキャッシュを全て削除しましょう
 
         FeedFetcher fetcher = new FeedFetcher(context);
         boolean result = openHelper.insertList(fetcher.parseRss(feedString));

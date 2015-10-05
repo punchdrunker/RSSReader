@@ -49,6 +49,9 @@ public class FeedItemOpenHelper extends SQLiteOpenHelper {
         // 興味がある人は自分で調べてみましょう
     }
 
+    /*
+    * DBのレコードを全件取得するメソッド
+    * */
     public List<FeedItemEntity> selectAll() {
         SQLiteDatabase db = null;
         Cursor cursor = null;
@@ -83,6 +86,9 @@ public class FeedItemOpenHelper extends SQLiteOpenHelper {
         return list;
     }
 
+    /*
+    * 渡されたリストを全てDBに保存するメソッド
+    * */
     public boolean insertList(List<FeedItemEntity> list) {
         boolean result = true;
         SQLiteDatabase db = null;
@@ -106,6 +112,9 @@ public class FeedItemOpenHelper extends SQLiteOpenHelper {
         return result;
     }
 
+    /*
+    * DBのレコード件数を調べるメソッド
+    * */
     public int selectAllCount() {
         int count = 0;
         SQLiteDatabase db = null;
@@ -124,6 +133,9 @@ public class FeedItemOpenHelper extends SQLiteOpenHelper {
         return count;
     }
 
+    /*
+    * feedテーブルのレコードを全て削除するメソッド
+    * */
     public boolean deleteAll() {
         boolean result = true;
         SQLiteDatabase db = null;
