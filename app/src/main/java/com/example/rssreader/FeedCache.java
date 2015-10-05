@@ -36,7 +36,7 @@ public class FeedCache {
     public List<FeedItemEntity> read() {
         FeedItemOpenHelper openHelper = new FeedItemOpenHelper(context);
 
-        // TODO:DBのレコード数を取得して、
+        // TODO:DBのレコード数を取得してresultに代入してみましょう
         List<FeedItemEntity> result = new ArrayList<FeedItemEntity>();
 
         openHelper.close();
