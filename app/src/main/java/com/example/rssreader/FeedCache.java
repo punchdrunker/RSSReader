@@ -48,8 +48,11 @@ public class FeedCache {
 
         // TODO: 念のため、既存のキャッシュを全て削除しましょう
 
-        FeedFetcher fetcher = new FeedFetcher(context);
-        boolean result = openHelper.insertList(fetcher.parseRss(feedString));
+        // TODO: feedStringをListに変換しましょう
+        
+        // TODO: feedStringをlistに変換したものをDBに保存しましょう
+
+        boolean result = false;
         if (!result) {
            Log.e("FeedCache.write", "failed to write cache!");
         }
