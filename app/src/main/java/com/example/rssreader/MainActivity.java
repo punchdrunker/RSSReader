@@ -56,14 +56,12 @@ public class MainActivity extends AppCompatActivity
     protected void onStart() {
         super.onStart();
 
-        // 設定を読み込む
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        // デフォルト値をtrueとして設定する
-        boolean cacheEnabled = sharedPreferences.getBoolean(getString(R.string.cache_enabled_key), true);
+        // TODO: 設定を読み込みましょう
+        // TODO: キャッシュを利用する設定のときだけ、キャッシュを利用するようにしてみましょう
 
         // キャッシュがあれば利用する
         FeedCache cache = new FeedCache(this);
-        if (cache.exists() && cacheEnabled) {
+        if (cache.exists()) {
             mListAdapter.addAll(cache.read());
         } else {
             // なければインターネット上から取得する

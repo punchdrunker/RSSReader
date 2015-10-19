@@ -49,15 +49,11 @@ public class FeedFetcher {
             Response response = client.newCall(request).execute();
             String result = response.body().string();
 
-            SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
-            // デフォルト値をtrueとして設定する
-            boolean cacheEnabled = sharedPreferences.getBoolean(context.getString(R.string.cache_enabled_key), true);
+            // TODO: 設定を読み込みましょう
+            // TODO: キャッシュを利用する設定のときだけ、キャッシュを作成するようにしてみましょう
 
-            if (cacheEnabled==true) {
-                // 取得したらキャッシュに書き込む
-                FeedCache cache = new FeedCache(context);
-                cache.write(result);
-            }
+            FeedCache cache = new FeedCache(context);
+            cache.write(result);
 
             return parseRss(result);
         } catch (IOException e) {
